@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../button/Button';
-import s from './Login.module.scss';
+import s from './Loggedin.module.scss';
 
-export function Login({children}) {
+export function Loggedin({children}) {
     return (
         <div className={s.login}>
             <Link to="/innskraning">Innskránining</Link>

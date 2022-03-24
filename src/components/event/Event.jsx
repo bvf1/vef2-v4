@@ -1,20 +1,28 @@
-import { useEffect } from 'react'
-import { Outlet, useParams } from 'react-router-dom'
+import { PropTypes } from 'prop-types';
+
+import { useEffect, useState } from 'react'
+import { Link, Outlet, useParams } from 'react-router-dom'
+import { Registration } from '../registration/Registration';
 import s from './Event.module.scss'
 
-export function Event({children, event}) {
-
-    useEffect(() => {
-        console.log("loaded event take place", event );
-    })
-    let params = useParams();
-    
+Event.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    slug: PropTypes.string,
+  }
+  
+  export function Event({name = '', description = '', slug = ''}) {
+    console.log({name, description, slug});
     return (
-        <h2>Event: {params.eventSlug}</h2>
-                     
-    )
-
-
-
-    
-}
+      <div>
+        <section>
+        <Link
+          className={s.events__link}
+          to={`/events/${slug}`}
+        >
+          {name}
+        </Link>
+        <p className={s.event__description}>{description}</p>
+        </section>
+      </div>
+    )}
