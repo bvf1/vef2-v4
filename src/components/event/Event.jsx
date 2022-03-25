@@ -5,12 +5,19 @@ import { Link, Outlet, useParams } from 'react-router-dom'
 import { Registration } from '../registration/Registration';
 import s from './Event.module.scss'
 
+
+export function Event() {
+
+  let params = useParams();
+  console.log("inevent");
+  return <h2>Event: {params.slug}</h2>
+}
+/*
 Event.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     slug: PropTypes.string,
   }
-  
   export function Event({name = '', description = '', slug = ''}) {
     console.log({name, description, slug});
     return (
@@ -25,4 +32,4 @@ Event.propTypes = {
         <p className={s.event__description}>{description}</p>
         </section>
       </div>
-    )}
+    )}*/

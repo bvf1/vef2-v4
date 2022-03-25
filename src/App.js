@@ -13,11 +13,10 @@ function App() {
   return (
     <div className="App">
       <h1>Viðburðarsíðan!</h1>
+      <Outlet />  
       <nav>
-        <Events></Events>
         <Login></Login>
       </nav>
-      <Outlet />
     </div>
 
 

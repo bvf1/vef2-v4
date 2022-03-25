@@ -1,6 +1,5 @@
 import { useEffect, useState} from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
-import { Event } from '../event/Event';
+import { Link, Outlet} from 'react-router-dom'
 import s from './Events.module.scss'
 
 
@@ -52,16 +51,14 @@ export function Events({children}) {
         <p>Sæki gögn...</p>
       );
     }
-  
-    
-    
+      
     const events = (data && data.items) || [];
   
     console.log("events",events);
     console.log("data", data);
   
     return (
-      <section >
+      <div>
         <h2>Viðburðir á næstunni</h2>
         <ul>
           {events.length === 0 && (
@@ -69,19 +66,24 @@ export function Events({children}) {
           )}
           {events.length > 0 && events.map((event) => {
             const {
-              id, name, description, slug,
+              name, description, slug,
             } = event;
             return (
-              <Event
-                key={id}
-                name={name}
-                description={description}
-                slug={slug}
-              />
+              <li key={event.id}>
+                <Link
+                  className={s.events__link}
+                  to={`/events/${slug}`}
+                  key={event.id}
+                >
+                  {name}
+                </Link>
+                <p className={s.event__description}>{description}</p>
+              </li>
             )
           })}
         </ul>
-      </section>
+        <Outlet />
+      </div>
     )
   }
 
@@ -113,4 +115,28 @@ export function Events({children, events}) {
         <Outlet />
     </div>
     )
-}*/
+}
+
+return (
+  <section >
+    <h2>Viðburðir á næstunni</h2>
+    <ul>
+      {events.length === 0 && (
+        <li>Engir Atburðir!</li>
+      )}
+      {events.length > 0 && events.map((event) => {
+        const {
+          id, name, description, slug,
+        } = event;
+        return (
+          <Event
+            key={id}
+            name={name}
+            description={description}
+            slug={slug}
+          />
+        )
+      })}
+    </ul>
+  </section>
+)*/
