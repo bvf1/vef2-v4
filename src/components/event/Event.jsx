@@ -1,16 +1,77 @@
 import { PropTypes } from 'prop-types';
 
 import { useEffect, useState } from 'react'
-import { Link, Outlet, useParams } from 'react-router-dom'
+import { Link, Outlet, useOutletContext, useParams } from 'react-router-dom'
+import { Back } from '../back/Back';
 import { Registration } from '../registration/Registration';
 import s from './Event.module.scss'
 
 
 export function Event() {
+  const isLoggedIn = useOutletContext();
+  console.log("isLoggedIn", isLoggedIn);
 
-  let params = useParams();
-  console.log("inevent");
-  return <h2>Event: {params.slug}</h2>
+  let {slugId} = useParams();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      setError(null);
+
+      let json;
+
+      const url = `https://vef2-20222-v3-synilausn.herokuapp.com/events/${slugId}`;
+
+      try {
+        const result = await fetch(url);
+
+        if (!result.ok) {
+          throw new Error('result not ok');
+        }
+
+        json = await result.json();
+      } catch (e) {
+        setError('Gat ekki sótt gögn.');
+        return;
+      } finally {
+        setLoading(false);
+      }
+
+      setData(json);
+    }
+    fetchData();
+  }, [slugId]);
+
+  if (error) {
+    return (
+      <p>Villa kom upp: {error}</p>
+    );
+  }
+
+  if (loading) {
+    return (
+      <p>Sæki gögn...</p>
+    );
+  }
+
+  const event = data || [];
+
+  console.log("event", event);
+    
+  return (
+    <>
+      <div>
+        <h2>{event.name}</h2>
+        <p>{event.description}</p>
+        <Registration data={event.registrations} isLoggedIn={isLoggedIn}/>
+      </div>
+      <Back goTo="/" />
+    </>
+  )
 }
 /*
 Event.propTypes = {

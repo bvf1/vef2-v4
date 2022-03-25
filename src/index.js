@@ -6,6 +6,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Events } from './components/events/Events';
 import { Event } from './components/event/Event';
+import { LoginForm } from './components/loginform/LoginForm';
 
 const rootElement = document.getElementById("root");
 render(
@@ -13,7 +14,8 @@ render(
     <Routes>
       <Route path="/" element={<App />} > 
         <Route index element={<Events />} />
-        <Route path="events/:slug" element={<Event />} />
+        <Route path="events" element={<Events />} />
+        <Route path="events/:slugId" element={<Event />} />
         <Route 
             path="*"
             element={
@@ -22,6 +24,7 @@ render(
               </main>
             }
           />
+        <Route path="login" element={<LoginForm/>} />
       </Route>
     </Routes>
   </BrowserRouter>,

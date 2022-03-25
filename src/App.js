@@ -9,13 +9,19 @@ import { Events } from './components/events/Events';
 
 
 function App() {
+  const [isLoggedIn, setLoginState] = useState(false);
+  useEffect(() => {
+  }, [isLoggedIn])
 
   return (
     <div className="App">
+      <header>
+        ToDo
+      </header>
       <h1>Viðburðarsíðan!</h1>
-      <Outlet />  
+      <Outlet context={isLoggedIn} />  
       <nav>
-        <Login></Login>
+        <Login setLoginState={setLoginState} isLoggedIn={isLoggedIn}></Login>
       </nav>
     </div>
 

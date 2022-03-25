@@ -36,8 +36,6 @@ export function Events({children}) {
         setData(json);
       }
       fetchData();
-      // þar sem við notum báðar af þessum state breytum, þá eru þau dependecy fyrir þetta effect
-      // ef annaðhvor breytist, þá keyrir effect aftur, annars ekki
     }, []);
   
     if (error) {
@@ -66,13 +64,13 @@ export function Events({children}) {
           )}
           {events.length > 0 && events.map((event) => {
             const {
-              name, description, slug,
+              id, name, description,
             } = event;
             return (
               <li key={event.id}>
                 <Link
                   className={s.events__link}
-                  to={`/events/${slug}`}
+                  to={`/events/${id}`}
                   key={event.id}
                 >
                   {name}
