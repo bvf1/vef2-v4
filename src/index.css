@@ -1,10 +1,14 @@
+
 html {
   box-sizing: border-box;
+
 }
 
 *,
 *::before,
 *::after {
+  text-align: start;
+
   box-sizing: inherit;
   margin: 0;
   padding: 0;
@@ -19,6 +23,7 @@ html {
 }
 
 body {
+  
   font-family: var(--fonts);
   font-size: 16px;
   margin: 0 auto;
@@ -36,11 +41,13 @@ a {
   color: var(--color-accent-dark);
 }
 
+
 section {
   margin-bottom: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+link {
+  border-top: 1px solid var(--color-accent-dark);
+  margin: 30rem;
+  padding: 10rem;
 }

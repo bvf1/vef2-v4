@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Login } from './components/login/Login';
 import { Events } from './components/events/Events';
+import Layout from './components/layout/Layout';
 
 
 
@@ -15,14 +16,10 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        ToDo
-      </header>
-      <h1>Viðburðarsíðan!</h1>
-      <Outlet context={isLoggedIn} />  
-      <nav>
+      <Layout>
+        <Outlet context={isLoggedIn} />  
         <Login setLoginState={setLoginState} isLoggedIn={isLoggedIn}></Login>
-      </nav>
+      </Layout>
     </div>
 
 

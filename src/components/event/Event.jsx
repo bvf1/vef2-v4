@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types';
 import { useEffect, useState } from 'react'
 import { Link, Outlet, useOutletContext, useParams } from 'react-router-dom'
 import { Back } from '../back/Back';
-import { Registration } from '../registration/Registration';
 import s from './Event.module.scss'
+import { Registration } from './Registration';
 
 
 export function Event() {
@@ -61,16 +61,25 @@ export function Event() {
   const event = data || [];
 
   console.log("event", event);
+
+  if (event === []) return (
+    <p class={s.event__empty}>Engin hefur skráð sig á þennan viðburð</p>
+  )
     
   return (
-    <>
-      <div>
-        <h2>{event.name}</h2>
+    <section className={s.event}>
+      <div className={s.event__info}>
+        <h2 className={s.event__title}>{event.name}</h2>
         <p>{event.description}</p>
-        <Registration data={event.registrations} isLoggedIn={isLoggedIn}/>
       </div>
-      <Back goTo="/" />
-    </>
+      <Registration
+        data={event.registrations} 
+        isLoggedIn={isLoggedIn}
+        eventId={event.id}
+      />
+    <Back goTo="/" />
+    </section>
+
   )
 }
 /*

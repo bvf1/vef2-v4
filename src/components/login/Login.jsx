@@ -7,7 +7,7 @@ export function Login({setLoginState, isLoggedIn}) {
 
   if (!isLoggedIn) return (
     <div className={s.login}>
-      <Link to="/login">Innskránining</Link>
+      <Link className={s.isLoggedIn} to="/login">Innskránining</Link>
       <Button 
         onClick={(e) => {setLoginState(true)}} 
         size="small"
@@ -17,15 +17,15 @@ export function Login({setLoginState, isLoggedIn}) {
     </div>
   )
   return (
-    <div className={s.login}>
-      <p>Skráður inn sem <b>test</b></p>
+    <section className={s.login}>
+      <p className={s.isLoggedIn}>Skráður inn sem <b>test</b></p>
       <Button 
         onClick={(e) => {setLoginState(false)}} 
         size="small"
       >
         Útskrá
       </Button>
-    </div>
+    </section>
   )
 
 }

@@ -1,18 +1,23 @@
-import { useState } from "react";
+import propTypes from 'prop-types';
 import { Button } from "../button/Button";
 import { Form } from "../form/Form";
+import Field from '../form/Field';
+import { useState } from 'react';
 
-export function Register({children, isLoggedIn}) {
+export function Register({isLoggedIn, eventId}) {
     const [registered, setRegistered] = useState(false);
+
     if (registered) return (
         <p>Þú hefur skráð þig á þennan viðburð</p>
     )
     if (isLoggedIn) return (
-        <Form>
-            <div>
-                <label for="comment">Athugasemd:</label>
-                <input type="text" name="comment" id="comment"/>
-            </div>
+        <Form action={`/events/${eventId}`}>
+            <Field
+                what="comment"
+                type="text"
+                text="Athugasemd: "
+            />
+
             <Button 
                 onClick={(e) => {setRegistered(true)}} 
                 size="large"
@@ -24,4 +29,9 @@ export function Register({children, isLoggedIn}) {
     return (
         <p>Skráðu þig inn til að skrá þig á viðburðinn</p>
     )
+}
+
+Register.propTypes = {
+    isLoggedIn: propTypes.bool.isRequired,
+    eventId: propTypes.number.isRequired,
 }

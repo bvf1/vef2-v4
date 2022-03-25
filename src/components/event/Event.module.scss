@@ -1,16 +1,27 @@
-.event {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
+.event__info {
   margin-bottom: 2rem;
+}
 
-  &__link {
-      font-weight: bold;
-  }
-  &__description {
-      display: block;
-      font-style: italic;
-  }
+.event__title {
+  font-size: 2rm;
+}
+.event__registered {
+  font-size: 1rem;
+}
 
+.event__registeredItem {
+  margin-bottom: 1rem;
+}
+
+.event__registeredName {
+  font-weight: bold;
+}
+
+.event__registeredComment {
+  display: block;
+  font-style: italic;
+}
+
+.event__register {
+  margin: 2rem 0;
 }

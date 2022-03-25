@@ -56,9 +56,9 @@ export function Events({children}) {
     console.log("data", data);
   
     return (
-      <div>
-        <h2>Viðburðir á næstunni</h2>
-        <ul>
+      <section className={s.events}>
+        <h2 className={s.events__title}>Viðburðir á næstunni</h2>
+        <ul className={s.events__list}>
           {events.length === 0 && (
             <li>Engir Atburðir!</li>
           )}
@@ -67,21 +67,23 @@ export function Events({children}) {
               id, name, description,
             } = event;
             return (
-              <li key={event.id}>
+              <li
+                className={s.events__event}
+                key={event.id}>
                 <Link
-                  className={s.events__link}
+                  className={s.events__eventLink}
                   to={`/events/${id}`}
                   key={event.id}
                 >
                   {name}
                 </Link>
-                <p className={s.event__description}>{description}</p>
+                <p className={s.events__eventDescription}>{description}</p>
               </li>
             )
           })}
         </ul>
         <Outlet />
-      </div>
+      </section>
     )
   }
 
