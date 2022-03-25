@@ -1,7 +1,7 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 const Layout = ({children}) => {
-    console.log("children",children)
     return (
         <>
         <header>
@@ -18,3 +18,8 @@ const Layout = ({children}) => {
 }
 
 export default Layout
+
+
+Layout.propTypes = {
+    children: propTypes.oneOfType([propTypes.element, propTypes.string]).isRequired,
+}

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../button/Button';
+import propTypes from 'prop-types';
 import s from './Login.module.scss';
 
 export function Login({setLoginState, isLoggedIn}) {
@@ -27,5 +27,11 @@ export function Login({setLoginState, isLoggedIn}) {
       </Button>
     </section>
   )
+
+}
+
+Login.propTypes = {
+  setLoginState: propTypes.func.isRequired,
+  isLoggedIn: propTypes.bool.isRequired,
 
 }

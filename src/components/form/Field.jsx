@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames';
-
+import propTypes from 'prop-types';
 import s from './Field.module.scss'
 
 function Field({what, type, text}) {
@@ -13,3 +13,9 @@ function Field({what, type, text}) {
 }
 
 export default Field
+
+Field.propTypes = {
+  what: propTypes.string.isRequired,
+  type: propTypes.string.isRequired,
+  text: propTypes.string.isRequired,
+}

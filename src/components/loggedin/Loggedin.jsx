@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '../button/Button';
+import propTypes from 'prop-types';
 import s from './Loggedin.module.scss';
 
 export function Loggedin({children}) {
@@ -11,4 +12,7 @@ export function Loggedin({children}) {
         </div>
     )
 
+}
+Loggedin.propTypes = {
+    children: propTypes.oneOfType([propTypes.element, propTypes.string]).isRequired,
 }

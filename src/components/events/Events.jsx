@@ -4,7 +4,7 @@ import s from './Events.module.scss'
 
 
 
-export function Events({children}) {
+export function Events() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);
@@ -86,57 +86,3 @@ export function Events({children}) {
       </section>
     )
   }
-
-/*
-export function Events({children, events}) {
-
-    useEffect(() => {
-        console.log("in events", events);
-    })
-
-    return (
-        <div>
-        <h2>Viðburðir á næstunni</h2> 
-        {events !== 0 && (events.map((event) => {
-            <div key={event.id}>
-                <Link
-                    className={s.events__link}
-                    to={`/events/${event.slug}`}
-                >
-                    {event.name}
-                </Link>
-                <p className={s.events__description}>{event.description}</p>
-                
-            </div>
-            return (
-                <Event event={event}></Event>
-            )
-        }))}
-        <Outlet />
-    </div>
-    )
-}
-
-return (
-  <section >
-    <h2>Viðburðir á næstunni</h2>
-    <ul>
-      {events.length === 0 && (
-        <li>Engir Atburðir!</li>
-      )}
-      {events.length > 0 && events.map((event) => {
-        const {
-          id, name, description, slug,
-        } = event;
-        return (
-          <Event
-            key={id}
-            name={name}
-            description={description}
-            slug={slug}
-          />
-        )
-      })}
-    </ul>
-  </section>
-)*/

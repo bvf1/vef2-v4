@@ -1,7 +1,5 @@
-import { PropTypes } from 'prop-types';
-
 import { useEffect, useState } from 'react'
-import { Link, Outlet, useOutletContext, useParams } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 import { Back } from '../back/Back';
 import s from './Event.module.scss'
 import { Registration } from './Registration';
@@ -9,7 +7,6 @@ import { Registration } from './Registration';
 
 export function Event() {
   const isLoggedIn = useOutletContext();
-  console.log("isLoggedIn", isLoggedIn);
 
   let {slugId} = useParams();
 
@@ -82,24 +79,3 @@ export function Event() {
 
   )
 }
-/*
-Event.propTypes = {
-    title: PropTypes.string,
-    description: PropTypes.string,
-    slug: PropTypes.string,
-  }
-  export function Event({name = '', description = '', slug = ''}) {
-    console.log({name, description, slug});
-    return (
-      <div>
-        <section>
-        <Link
-          className={s.events__link}
-          to={`/events/${slug}`}
-        >
-          {name}
-        </Link>
-        <p className={s.event__description}>{description}</p>
-        </section>
-      </div>
-    )}*/

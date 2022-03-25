@@ -2,7 +2,6 @@ import { Back } from '../back/Back';
 import { Button } from '../button/Button';
 import Field from '../form/Field';
 import { Form } from '../form/Form';
-import s from './LoginForm.module.scss';
 
 
 export function LoginForm() {

@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { Register } from './Register';
+import propTypes from 'prop-types';
+
 import s from './Event.module.scss'
 
 
-export function Registration({children, data, isLoggedIn}) {
-    console.log("data", data);
+export function Registration({data, isLoggedIn}) {
     let {slugId} = useParams();
 
     const registrations = data || [];
@@ -35,4 +36,9 @@ export function Registration({children, data, isLoggedIn}) {
         </section>
       </div>
     )
+}
+
+Registration.propTypes = {
+  data: propTypes.array.isRequired,
+  isLoggedIn: propTypes.bool.isRequired
 }
